@@ -1,0 +1,23 @@
+Create table EmpManagement(
+	ID int identity(1,1) primary key,
+	NAME VARCHAR(100),
+	PhoneNo VARCHAR(100),
+	Address VARCHAR(100),
+	IsActives int
+);
+
+SELECT * FROM EmpManagement;
+
+CREATE PROC usp_Login(@Name VARCHAR(100), @PhoneNo VARCHAR(100))
+AS 
+BEGIN
+	SELECT * FROM EmpManagement WHERE NAME = @Name and PhoneNo = @PhoneNo;
+END
+
+
+
+CREATE PROC usp_Registration(@Name VARCHAR(100), @PhoneNo VARCHAR(100), @Address VARCHAR(100), @IsActives int)
+AS 
+BEGIN
+	INSERT INTO EmpManagement (NAME,PhoneNo,Address,IsActives) VALUES (@Name, @PhoneNo, @Address, @IsActives)
+END
